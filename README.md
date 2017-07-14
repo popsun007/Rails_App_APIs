@@ -1,2 +1,3 @@
-# errands_runner
-Hello First Commit!
+# Errands_runner
+
+A new way for online abroad shopping.
