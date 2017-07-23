@@ -1,0 +1,48 @@
+sudo yum update -y
+
+#remove ruby2.0 by default
+sudo yum remove ruby -y
+
+#install ruby 2.2 version
+sudo yum install ruby22
+
+#install bundler
+gem install bundler
+
+#install node.js
+#sudo yum install nodejs
+
+#install Passenger and Nginx
+gem install passenger --no-rdoc --no-ri
+
+sudo yum remove nginx (optional)
+sudo rm -rf /etc/nginx
+
+#passenger dependencies
+ * To install C compiler:
+   Please install it with sudo yum install gcc
+
+ * To install C++ compiler:
+   Please install it with sudo yum install gcc-c++
+
+ * To install Curl development headers with SSL support:
+   Please install it with sudo yum install libcurl-devel
+
+ * To install OpenSSL development headers:
+   Please install it with sudo yum install openssl-devel
+
+ * To install Zlib development headers:
+   Please install it with sudo yum install zlib-devel
+
+ * To install Ruby development headers:
+   Please install it with sudo yum install ruby22-devel
+
+ * Install rack gem: 
+   /usr/bin/ruby2.2 /usr/bin/gem install rack
+
+(if have permission issue):
+export ORIG_PATH="$PATH"
+sudo -s -E
+export PATH="$ORIG_PATH"
+/usr/bin/ruby2.2 /home/ec2-user/.gem/ruby/2.2/gems/passenger-5.1.6/bin/passenger-install-nginx-module
+
