@@ -19,6 +19,7 @@ brew services start mysql
 create mysql user 'dev'
 import the seed data to db
 
+
 ##User API endpoint:
 
 | METHOD| ENDPOINT           | RETURN | OAUTH |
@@ -27,3 +28,4 @@ import the seed data to db
 | POST  | /api/v1/users/     | user   |       |
 | PATCH | /api/v1/users/{id} | user   |       |
 | DETELE| /api/v1/users/{id} | user   |       |
+
