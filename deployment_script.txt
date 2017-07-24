@@ -1,0 +1,99 @@
+sudo yum update -y
+
+#remove ruby2.0 by default
+sudo yum remove ruby -y
+
+#install ruby 2.2 version
+sudo yum install ruby22
+
+#install bundler
+gem install bundler
+
+#install node.js
+sudo yum install epel-release
+sudo curl -O https://nodejs.org/dist/v4.6.0/node-v4.6.0.tar.gz
+sudo tar -xvf node-v4.6.0.tar.gz
+sudo rm node-v4.6.0.tar.gz
+$ sudo cd node-v4.6.0
+$ sudo ./configure
+$ sudo make
+$ sudo make install
+
+
+#install Passenger and Nginx
+
+gem install passenger --no-rdoc --no-ri
+
+sudo yum remove nginx (optional)
+sudo rm -rf /etc/nginx
+
+#passenger dependencies
+ * To install C compiler:
+   Please install it with sudo yum install gcc
+
+ * To install C++ compiler:
+   Please install it with sudo yum install gcc-c++
+
+ * To install Curl development headers with SSL support:
+   Please install it with sudo yum install libcurl-devel
+
+ * To install OpenSSL development headers:
+   Please install it with sudo yum install openssl-devel
+
+ * To install Zlib development headers:
+   Please install it with sudo yum install zlib-devel
+
+ * To install Ruby development headers:
+   Please install it with sudo yum install ruby22-devel
+
+ * Install rack gem: 
+   /usr/bin/ruby2.2 /usr/bin/gem install rack
+
+(if have permission issue):
+	grant write permission to the user by doing:
+		
+		#change the ownership
+		sudo chown username: myfolder
+
+		#the user owning myfolder will be username. Then you can execute
+		sudo chmod u+w myfolder
+
+(if RAM does not enough to compile the source code when install Nginx, try to swap the memory from hard drive)
+
+
+#Clone the repo from GitHut
+
+#first install git
+sudo yum install git-all
+
+#Clone the source code
+sudo git clone https://github.com/popsun007/Errands_Runner_BE.git
+
+
+
+#Deploy app
+
+#insert credentials
+devise keys
+app_root/config/secrets.yml file
+
+#change the ownership to user
+chown -R ec2-user:ec2-user path/to/app
+#install gems:
+bundle install
+
+#install mysql server
+sudo yum install mysql-server
+
+if mysql2 error: can't connect to mysql server through socket, first do "mysqladmin variables | grep socket", then change the config/database.yml socket path with correct path.
+
+#create db, tables, and migration
+rake db:create
+rake db:migrate
+
+#start the server
+rails s -p 3000 -b 0.0.0.0
+
+-config the AWS security group to 'anywhere' if the site just hang there.
+
+
