@@ -10,8 +10,14 @@ sudo yum install ruby22
 gem install bundler
 
 #install node.js
-#sudo yum install nodejs
-
+sudo yum install epel-release
+sudo curl -O https://nodejs.org/dist/v4.6.0/node-v4.6.0.tar.gz
+sudo tar -xvf node-v4.6.0.tar.gz
+sudo rm node-v4.6.0.tar.gz
+$ sudo cd node-v4.6.0
+$ sudo ./configure
+$ sudo make
+$ sudo make install
 
 
 #install Passenger and Nginx
@@ -57,6 +63,37 @@ sudo rm -rf /etc/nginx
 
 #Clone the repo from GitHut
 
-#first install git 
+#first install git
+sudo yum install git-all
+
+#Clone the source code
+sudo git clone https://github.com/popsun007/Errands_Runner_BE.git
+
+
+
+#Deploy app
+
+#insert credentials
+devise keys
+app_root/config/secrets.yml file
+
+#change the ownership to user
+chown -R ec2-user:ec2-user path/to/app
+#install gems:
+bundle install
+
+#install mysql server
+sudo yum install mysql-server
+
+if mysql2 error: can't connect to mysql server through socket, first do "mysqladmin variables | grep socket", then change the config/database.yml socket path with correct path.
+
+#create db, tables, and migration
+rake db:create
+rake db:migrate
+
+#start the server
+rails s -p 3000 -b 0.0.0.0
+
+-config the AWS security group to 'anywhere' if the site just hang there.
 
 
