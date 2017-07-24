@@ -12,7 +12,10 @@ gem install bundler
 #install node.js
 #sudo yum install nodejs
 
+
+
 #install Passenger and Nginx
+
 gem install passenger --no-rdoc --no-ri
 
 sudo yum remove nginx (optional)
@@ -41,8 +44,19 @@ sudo rm -rf /etc/nginx
    /usr/bin/ruby2.2 /usr/bin/gem install rack
 
 (if have permission issue):
-export ORIG_PATH="$PATH"
-sudo -s -E
-export PATH="$ORIG_PATH"
-/usr/bin/ruby2.2 /home/ec2-user/.gem/ruby/2.2/gems/passenger-5.1.6/bin/passenger-install-nginx-module
+	grant write permission to the user by doing:
+		
+		#change the ownership
+		sudo chown username: myfolder
+
+		#the user owning myfolder will be username. Then you can execute
+		sudo chmod u+w myfolder
+
+(if RAM does not enough to compile the source code when install Nginx, try to swap the memory from hard drive)
+
+
+#Clone the repo from GitHut
+
+#first install git 
+
 
